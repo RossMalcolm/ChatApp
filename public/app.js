@@ -8,6 +8,15 @@ var createRoomBtn = document.getElementById("create-room");
 var messages = document.getElementById("msg");
 var chatDisplay = document.getElementById("chat-display");
 
+// get passed along parameters from url
+var url = window.location.search.split("&");
+var u = url[0];
+var p = url[1];
+var r = url[2];
+var uName = u.split("=");
+var uPass = p.split("=");
+
+
 var currentRoom = "global";
 
 // Send message on button click
@@ -30,7 +39,9 @@ createRoomBtn.addEventListener("click", function () {
 
 
 socket.on("connect", function() {
-  socket.emit("createUser", prompt("Enter name: "));
+  socket.emit("createUser", uName[1]);
+  // socket.emit("storeUser", { u: uName[1], p: uPass[1] });
+  console.log("LOGGED USER", uName[1], uPass[1]);
 });
 
 

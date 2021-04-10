@@ -37,37 +37,41 @@
     ></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-</head>
-<body>
-  <div class="container container-fluid col-10 offset-2">
-    <div class="container container-fluid col-4 offset-1">
-      <form action="chat.html" method="" class="form-signin">
-        <h2 class="form-signin-header">Login</h2>
+  </head>
+  <body>
+    <div class="container container-fluid col-8 offset-2">
+      <div class="row col-12">
+        <h2 class="col-4 offset-4 text-center pb-3">
+          <strong>Chat <span>App</span></strong>
+        </h2>
+      </div>
+      <div class="row">
+        <div id="sidebar" class="col-3">
+          <p>Rooms <span id="create-room">+</span></p>
+          <ul id="roomlist"></ul>
+          <p>Users</p>
+          <ul id="userlist"></ul>
+        </div>
+        <div id="char-area" class="col-9">
+          <div class="row col-12">
+            <div id="chat-display" class="col-12">
+              <div id="msg"></div>
+            </div>
+          </div>
 
-        <label for="inputUsername" class="sr-only">Username</label>
-        <input type="text" name="inputName" id="inputName" class="form-control" placeholder="Username" required autofocus>
-        
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="inputPass" id="inputPass" class="form-control" placeholder="Password" required autofocus>
-        
-        <script>
-          function hashPass($pass) {
-              $_POST['inputPass'] = password_hash($pass, PASSWORD_DEFAULT);
-          }
-        </script>
-
-        <button class="btn btn-sm btn-primary" style="width: 50%; padding: 4px;" type="submit" onclick="hashPass()">Login</button><button type="button" class="btn btn-sm btn-primary" style="width: 50%; padding: 4px;" onclick="newUser()">Sign Up</button>
-      </form>
+          <div class="row col-12">
+            <input
+              class="col-10"
+              type="text"
+              id="message"
+              placeholder="Type your message"
+            />
+            <button class="col-2" id="send">Send</button>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <script>
-    function newUser() {
-      // update and check database for new user and add
 
-      window.alert("USER REGISTERED!");
-      location.reload();
-    }
-  </script>
-  <script src="login.js"></script>
-</body>
+    <script src="app.js"></script>
+  </body>
 </html>
