@@ -1,6 +1,7 @@
 var express = require("express");
 var socket = require("socket.io");
 var mysql = require('mysql');
+const { ReplSet } = require("mongodb");
 
 var app = express();
 
@@ -103,6 +104,30 @@ io.on("connection", function(socket) {
 
 
   socket.on("sendMessage", function(data) {
+    var uID = 0;
+    console.log("MSG::: ", socket.currentRoom, data);
+
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "",
+      database:"chatdb"
+    });
+    sql1 = "SELECT id FROM user WHERE name='"+socket.username+"'";
+    con.query(sql1, function(err, result) {
+      if(err) throw err;
+      var uID = result[0].id;
+      console.log("id", uID);
+    });
+
+    var room = rooms.indexOf(socket.currentRoom);
+
+    sql = "INSERT INTO messages (room_id, id, message) VALUES ('"+room+"', '"+uID+"', '"+data+"')";
+    con.query(sql, function(err, result) {
+      if(err) throw err;
+      console.log("message inserted", result);
+    });
+
     io.sockets
       .to(socket.currentRoom)
       .emit("updateChat", socket.username, data);
