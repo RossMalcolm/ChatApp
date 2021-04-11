@@ -1,7 +1,7 @@
 Header for group project:
-Project title: ??? 
-Name: list of names, separated by comma
-ID: list ID in order, separated by comma 
+Project title: ChatApp
+Name: Riley Voigt, Ross Malcolm, Cameron Redmond
+ID: 170484620, 170514930, 170897920 
 Statement: We claim that the enclosed project submission is our team work.
 
 Project
@@ -16,11 +16,13 @@ P2.1 Client side component & UI
 
 P2.2 Server side CGI components   
 
-`![Server side CGI components](images/T1.1_validation.PNG)`
+`![Server side CGI components (server.js)](server.js)`
 
 P2.3 Database tier design, data, usage  
 
-`![Database tier design, data, usage](images/T1.1_validation.PNG)`
+`![Database tier design, data, usage](images/database.PNG)`
+`![Database tier design, data, usage](images/messages.PNG)`
+`![Database tier design, data, usage](images/rooms.PNG)`
 
 P2.4 New features and tools              
 
@@ -30,10 +32,10 @@ P2.4 New features and tools
 
 P2.5 Problem solving algorithms
 
-`![Problem solving algorithms](images/T1.1_validation.PNG)`
+`![Problem solving algorithms](public/app.js)`
 
 P2.6 Efficiency and robustness
 
-`![Efficiency and robustness](images/T1.1_validation.PNG)`
+`![Efficiency and robustness](public/app.js)`
 
               
