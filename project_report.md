@@ -1,10 +1,3 @@
-Header for individual project:
-Project title: ???
-Name: ???
-ID: ???
-Statement: I claim that the enclosed project submission is my individual work.
-
-
 Header for group project:
 Project title: ??? 
 Name: list of names, separated by comma
@@ -35,11 +28,11 @@ P2.4 New features and tools
 `![New features and tools (Login Page)](images/ClientSideUIPart1.PNG)`
 `![New features and tools (Notifications)](images/Notifications.PNG)`
 
-P2.5 Problem solving algorithms          
+P2.5 Problem solving algorithms
 
 `![Problem solving algorithms](images/T1.1_validation.PNG)`
 
-P2.6 Efficiency and robustness           
+P2.6 Efficiency and robustness
 
 `![Efficiency and robustness](images/T1.1_validation.PNG)`
 
