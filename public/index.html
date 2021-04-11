@@ -56,18 +56,25 @@
           }
         </script>
 
-        <button class="btn btn-sm btn-primary" style="width: 50%; padding: 4px;" type="submit" onclick="hashPass()">Login</button><button type="button" class="btn btn-sm btn-primary" style="width: 50%; padding: 4px;" onclick="newUser()">Sign Up</button>
+        <button class="btn btn-sm btn-primary" style="width: 50%; padding: 4px;" type="submit">Login</button>
+        <button type="button" class="btn btn-sm btn-primary" style="width: 50%; padding: 4px;" id="Signup">Sign Up</button>
       </form>
     </div>
   </div>
   <script>
-    function newUser() {
-      // update and check database for new user and add
+    var socket = io.connect("http://localhost:5000");
 
-      window.alert("USER REGISTERED!");
+    var signupBtn = document.getElementById("Signup");
+    var uName = document.getElementById("inputName");
+    var uPass = document.getElementById("inputPass");
+
+    signupBtn.addEventListener("click", function () {
+      console.log("username Stored", uName.value);
+      socket.emit("storeUser", uName.value, uPass.value);
+      window.alert("user registered!", uName.value);
       location.reload();
-    }
+    });
   </script>
-  <script src="login.js"></script>
+  <!-- <script src="app.js"></script> -->
 </body>
 </html>

@@ -44,7 +44,7 @@ con.connect(function(err) {
     if (err) throw err;
     console.log("Room Table created");
   });
-  var sql = "CREATE TABLE IF NOT EXISTS user (message_id int AUTO_INCREMENT, room_id int, id int, message VARCHAR(255), PRIMARY KEY (message_id))";
+  var sql = "CREATE TABLE IF NOT EXISTS messages (message_id int AUTO_INCREMENT, room_id int, id int, message VARCHAR(255), PRIMARY KEY (message_id))";
   con.query(sql, function (err, result) {
     if (err) throw err;
     console.log("Table created");
@@ -61,13 +61,6 @@ con.connect(function(err) {
     
   });
 });
-
-console.log("the middle")
-
-
-  
-
-
 
 io.on("connection", function(socket) {
 
@@ -86,6 +79,28 @@ io.on("connection", function(socket) {
     socket.emit("updateRooms", rooms, "global");
   });
 
+  socket.on("storeUser", function(username, password){
+      console.log(username, password);
+      var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "",
+      database:"chatdb"
+      });
+  
+      sql = "SELECT EXISTS (SELECT name FROM user WHERE name ='"+ username +"') AS e";
+      con.query(sql, function (err, result) {
+      if (err) throw err;
+        if(result[0].e == 0){
+          sql = "INSERT INTO user (name, password) VALUES ('"+username+"', '"+password+"')";
+          con.query(sql, function (err, result) {
+            if (err) throw err;
+            console.log("1 user inserted");
+          });
+        }
+      });
+  });
+
 
   socket.on("sendMessage", function(data) {
     io.sockets
@@ -96,7 +111,7 @@ io.on("connection", function(socket) {
 
   socket.on("createRoom", function(room) {
     if (room != null) {
-      sql = "INSERT INTO rooms (room_name) VALUES ('"+ room +"')";
+      sql = "INSERT IGNORE INTO rooms (room_name) VALUES ('"+ room +"')";
       con.query(sql, function(err){
         if(err) throw err;
         console.log("room inserted")

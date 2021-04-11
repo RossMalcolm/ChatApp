@@ -21,6 +21,7 @@
     "express": "^4.17.1",
     "mongodb": "^3.6.6",
     "mysql": "^2.18.1",
+    "requirejs": "^2.3.6",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {}

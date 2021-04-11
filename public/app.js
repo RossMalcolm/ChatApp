@@ -16,7 +16,6 @@ var r = url[2];
 var uName = u.split("=");
 var uPass = p.split("=");
 
-
 var currentRoom = "global";
 
 // Send message on button click
@@ -41,7 +40,7 @@ createRoomBtn.addEventListener("click", function () {
 socket.on("connect", function() {
   socket.emit("createUser", uName[1]);
   // socket.emit("storeUser", { u: uName[1], p: uPass[1] });
-  console.log("LOGGED USER", uName[1], uPass[1]);
+  // console.log("LOGGED USER", uName[1], uPass[1]);
 });
 
 
