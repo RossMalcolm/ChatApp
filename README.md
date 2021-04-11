@@ -1,6 +1,6 @@
 1. Extract zip file to desired location
 
-2. Open command prompt and cd to the directory in which you extracted the folder
+2. Open command prompt and cd to the extracted folder
 
 3. Type: npm install (to get the node_modules folder)
 
